@@ -7,12 +7,19 @@ productMainController.controller('addProductController', ['$scope', '$http', '$l
         $scope.product = {};
         $scope.addPerson = true;
         $scope.editPerson = false;
-        $scope.addProduct = function () {
+        $scope.addProduct = function (flowFiles) {
 
             //$http.post("/product", $scope.product).success(function () {
-            productService.save($scope.product,function(){
-                $rootScope.addSuccess = true;
-                $location.path("listProduct");
+            productService.save($scope.product,function(data){
+                //after adding the object, add a new picture
+                //get the product id which the image will be added
+                var productid=data.id;
+                //set location
+                flowFiles.opts.target='http://localhost:8080/productImage/add';
+                flowFiles.opts.testChunks = false;
+                flowFiles.opts.query = {productid:productid};
+                flowFiles.upload();
+                $scope.$apply(); 
 
             });
         };
@@ -58,7 +65,7 @@ productMainController.controller('editProductController', ['$scope', '$http', '$
         $scope.addPerson = false;
         $scope.editPerson = true;
         var id = $routeParams.id;
-        $http.get("/product/" + id).success(function (data) {
+        $http.get("http://localhost:8000/product/" + id).success(function (data) {
             $scope.product = data;
         });
 

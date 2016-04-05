@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/shoppingcart")
+@CrossOrigin
 public class ShoppingCartController {
     @Autowired
     ShoppingCartService shoppingCartService;

@@ -40,6 +40,7 @@
             <th translate>listProduct.description</th>
             <th class="text-right" translate>listProduct.netPrice</th>
             <th class="text-right" translate>listProduct.price</th>
+            <th class="test-center" translate>listProduct.picture</th>
             <th translate>listProduct.edit</th>
             <th translate>listProduct.delete</th>
 
@@ -50,6 +51,11 @@
             <td>{{product.description}}</td>
             <td class="text-right">{{product.netPrice | number}}</td>
             <td class="text-right">{{product.totalPrice | number}}</td>
+            <td>
+                <div ng-repeat="image in product.image" class="text-center">
+                    <img ng-src="data:{{image.contentType}}; base64, {{image.content}}">
+                </div>
+            </td>
             <td class="text-center"><a ng-href="#/editProduct/{{product.id}}"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
             <td class="text-center"><a ng-href="#/listProduct"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="deleteProduct(product.id)"></span></a></td>
         </tr>
