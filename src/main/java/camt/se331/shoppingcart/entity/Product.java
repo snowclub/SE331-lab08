@@ -29,7 +29,7 @@ public class Product implements Comparable{
         this.id = id;
     }
 
-    public Product(){
+    public Product(long l, String kindle, String s, double v, Image image){
 
     };
 

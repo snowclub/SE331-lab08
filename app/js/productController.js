@@ -19,6 +19,8 @@ productMainController.controller('addProductController', ['$scope', '$http', '$l
                 flowFiles.opts.testChunks = false;
                 flowFiles.opts.query = {productid:productid};
                 flowFiles.upload();
+                $rootScope.addSuccess = true;
+                $location.path("listProduct");
                 $scope.$apply(); 
 
             });

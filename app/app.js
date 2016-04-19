@@ -54,3 +54,13 @@ labApp.config(['flowFactoryProvider', function (flowFactoryProvider) {
     //Can be used with different implementations of Flow.js
     //flowFactoryProvider.factory = fustyFlowFactory;
 }])
+
+labApp.config( [
+    '$compileProvider',
+    function( $compileProvider )
+    {
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|chrome-extension):/);
+
+        $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|local|data):/);
+}
+]);
